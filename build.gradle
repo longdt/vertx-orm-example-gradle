@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'net.ltgt.apt-idea' version "0.15"
+    id 'idea'
+}
+
+group 'com.github.longdt.vertxorm.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.github.longdt:vertx-orm-postgresql:2.2.2'
+    //codegen annotation processor
+    compileOnly 'com.github.longdt:vertx-orm-codegen:2.0.0'
+    annotationProcessor 'com.github.longdt:vertx-orm-postgresql:2.2.2' //need add this line due vertx-orm-codegen depends on orm lib
+    annotationProcessor 'com.github.longdt:vertx-orm-codegen:2.0.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
